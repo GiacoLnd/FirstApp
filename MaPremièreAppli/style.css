@@ -15,7 +15,6 @@ nav{
     justify-content: center;
     align-items: center;
     margin: 25px;
-    size: 100%;
 }
 nav ul{
     display: flex;
@@ -28,7 +27,7 @@ nav ul{
     padding: 30px;
     font-size: 1.1em;
     font-weight: bold;
-    border-radius: 30%;
+    border-radius: 30px;
     text-shadow: 0 15px 10px #403d39;
 }
 nav ul:hover{
@@ -36,6 +35,7 @@ nav ul:hover{
     background-color: #16425b;
     border: solid 3px #403d39;
     color: #2f6690;
+    box-shadow: 5px 8px 10px black;
 }
 a{
     color: white;
@@ -46,7 +46,7 @@ a{
 a:hover{
     color: #eb5e28;
     text-decoration: underline;
-    transition: ease 0.3s;
+    transition: color ease 0.3s;
     color: #d9dcd6;
 }
 #wrapper{
@@ -62,7 +62,6 @@ form p{
     margin:auto;
     padding: 25px;
     font-size: 1.2em;
-    size: 100%;
     text-align: center;
     font-weight: 600;
 }
@@ -77,9 +76,8 @@ form input{
 }
 .button{
     margin: auto;
-    padding: auto;
     width: 120px;
-    height: 100px;
+    height: 120px;
     border-radius: 50%;
     background-color: grey;
     color: white;
@@ -92,15 +90,12 @@ form input{
     box-shadow: 7px 10px 12px black;
     background-color: red;
 }
-table{
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
+#table{
+    display: table;
     border: solid black;
-    background-color: #ebf8e1;
+    background-color: #2f6690;
     padding: auto;
-    margin: 30px;
+    margin: 30px auto;
     border-spacing: 15px;
     border-color: white;
     width: fit-content;

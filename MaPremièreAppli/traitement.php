@@ -38,10 +38,12 @@ if(isset($_POST['action'])) {
             if($index !== null && isset($_SESSION['products'][$index])) // vérifie si la quantité est supérieure à 1 - Ne fonctionnera pas si User tente de descendre à 0 ou moins
             {
                 $_SESSION['products'][$index]['qtt']--; // Décrémente la quantité de 1
+                $_SESSION['products'][$index]['total'] = $_SESSION['products'][$index]['price'] * $_SESSION['products'][$index]['qtt'];
                 if($_SESSION['products'][$index]['qtt'] == 0) {
                     unset($_SESSION['products'][$index]);
                     $_SESSION['products'] = array_values($_SESSION['products']);
                     $_SESSION['message'] = $name." a été supprimé.";
+                    // supprime le produit si la quantité atteint 0
                 }
             }
             break;
@@ -50,7 +52,9 @@ if(isset($_POST['action'])) {
         case 'increase':
             $index = $_POST['index'];
             if(isset($_SESSION['products'][$index])){  
-                $_SESSION['products'][$index]['qtt']++;  // incrémente la quantité au clic
+                $_SESSION['products'][$index]['qtt']++;
+                $_SESSION['products'][$index]['total'] = $_SESSION['products'][$index]['price'] * $_SESSION['products'][$index]['qtt'];  
+                // incrémente la quantité au clic
             }
             break;
 

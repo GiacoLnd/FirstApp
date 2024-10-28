@@ -1,27 +1,8 @@
 <?php
     session_start();
+    ob_start();
+    $title = 'Ajouter des produits';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-        </style>
-        <title>Ajout Produit</title>
-    </head>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.php">Ajouter des produits</a></li>
-                <li><a href="recap.php">Récapitulatif</a></li>
-            </ul>
-        </nav>
-    </header>
-    <body>
-        <div id="wrapper">
             <h1>Ajouter des produits</h1>
             <form action="traitement.php" method="post">
             <?php if (isset($_SESSION['message'])): ?>
@@ -29,7 +10,7 @@
                     echo htmlspecialchars($_SESSION['message']); // affiche le message lors de l'ajout
                     unset($_SESSION['message']); // Supprime le message après affichage
                     ?>
-    <?php endif; ?>
+                <?php endif; ?>
                 <p>
                     <label >
                         Nom Du produit :
@@ -53,7 +34,6 @@
                     <input type="submit" class="button" name="submit" value="Ajouter le produit">
                 </p>
             </form>
-            <?php         echo isset($_SESSION['compteurProduit']) ? "<p> <strong>Nombre de produit sélectionné(s) : ". $_SESSION['compteurProduit']."</strong></p>" : 0; ?>
-        </div>
-    </body>
-</html>
+            <?php         echo isset($_SESSION['compteurProduit']) ? "<p> <strong>Nombre de produit sélectionné(s) : ". $_SESSION['compteurProduit']."</strong></p>" : 0;
+            $content = ob_get_clean();
+            require_once 'template.php';?>

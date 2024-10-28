@@ -1,24 +1,8 @@
 <?php
-    session_start();
+session_start();
+ob_start();
+$title = 'Récapitulatif des produits';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.4.0/remixicon.css" rel="stylesheet">
-        <title>Récapitulatif des produits</title>
-    </head>
-    <header>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Ajouter des produits</a></li>
-                    <li><a href="recap.php">Récapitulatif</a></li>
-                </ul>
-            </nav>
-    </header>
-    <body>
         <div id ="wrapper">
         <?php
             if (isset($_SESSION['message'])): ?>
@@ -33,7 +17,7 @@
             }
             else {
                 // sinon affiche un tableau avec ces titres et créé la variable montant total
-                echo "<table>",
+                echo "<table id='table'>",
                         "<thead>",
                             "<tr>",
                                 "<th>#</th>",
@@ -75,8 +59,5 @@
             <button type='submit' name='action' value='deleteAll'>Supprimer tous les produits</button>
         </form>
         <?php echo isset($_SESSION['compteurProduit']) ? "<p> Nombre de produit sélectionné(s)". $_SESSION['compteurProduit']."</p>" : 0;
-
-                
-        ?>
-    </body>
-</html>
+        $content = ob_get_clean();
+        require_once 'template.php';?>
