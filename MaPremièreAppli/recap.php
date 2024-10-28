@@ -70,11 +70,11 @@
                 "</tr>",
             "</tbody>",
             "</table>";
-            };
-
-        echo "<button type='submit' name='action' value='deleteAll'>Supprimer tous les produits</button>";
-
-        echo isset($_SESSION['compteurProduit']) ? "<p> Nombre de produit sélectionné(s)". $_SESSION['compteurProduit']."</p>" : 0;
+            };?>
+        <form method="post" action="traitement.php">
+            <button type='submit' name='action' value='deleteAll'>Supprimer tous les produits</button>
+        </form>
+        <?php echo isset($_SESSION['compteurProduit']) ? "<p> Nombre de produit sélectionné(s)". $_SESSION['compteurProduit']."</p>" : 0;
 
                 
         ?>
