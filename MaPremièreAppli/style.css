@@ -5,27 +5,41 @@
 }
 body{
     background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+
+}
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
 }
 nav ul{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    padding: 30px;
     list-style-type: none;
-    background-color: #ebf8e1;
-    border: solid white;
+    background-color: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    width: 550px;
+    transition: ease 0.3s ;
+    padding: 30px;
+    font-size: 1.1em;
+    font-weight: bold;
 }
 nav ul:hover{
-    border-radius: 0% 0% 50% 50%; 
-    transition: ease 0.3s ;
+    border-radius: 40% 40%; 
+    background-color: #ebf8e1;
+    border: solid 3px #f69d3c;
 }
 a{
     color: black;
     text-decoration: none;
     font-size: 2em;
+    text-align: justify;
 }
 a:hover{
-    color: orangered;
+    color: #f69d3c;
     text-decoration: underline;
     transition: ease 0.3s;
 }
@@ -43,6 +57,8 @@ form p{
     padding: 25px;
     font-size: 1.2em;
     size: 100%;
+    text-align: center;
+    font-weight: 600;
 }
 form{
     display: flex;
@@ -56,5 +72,27 @@ form input{
 .button{
     margin: auto;
     padding: auto;
-    width: 150%;
+    width: 120px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f69d3c;
+    color: white;
+    cursor: pointer;
+}
+table{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    border: solid black;
+    background-color: #ebf8e1;
+    padding: auto;
+    margin: 30px;
+    border-spacing: 15px;
+    border-color: white;
+    width: fit-content;
+}
+.alert{
+    font-size: 1.2em;
+    font-weight: 600;
 }
