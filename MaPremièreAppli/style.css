@@ -4,44 +4,50 @@
     padding: 0;
 }
 body{
-    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    background: #2f6690;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
-
+    color: white;
+    text-shadow: 1px 2px 2px black;
 }
 nav{
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 25px;
+    size: 100%;
 }
 nav ul{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     list-style-type: none;
-    background-color: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
-    width: 550px;
+    background-color: #2f6690;
+    width: 80%;
     transition: ease 0.3s ;
     padding: 30px;
     font-size: 1.1em;
     font-weight: bold;
+    border-radius: 30%;
+    text-shadow: 0 15px 10px #403d39;
 }
 nav ul:hover{
     border-radius: 40% 40%; 
-    background-color: #ebf8e1;
-    border: solid 3px #f69d3c;
+    background-color: #16425b;
+    border: solid 3px #403d39;
+    color: #2f6690;
 }
 a{
-    color: black;
+    color: white;
     text-decoration: none;
     font-size: 2em;
     text-align: justify;
 }
 a:hover{
-    color: #f69d3c;
+    color: #eb5e28;
     text-decoration: underline;
     transition: ease 0.3s;
+    color: #d9dcd6;
 }
 #wrapper{
     display: flex;
@@ -75,9 +81,16 @@ form input{
     width: 120px;
     height: 100px;
     border-radius: 50%;
-    background-color: #f69d3c;
+    background-color: grey;
     color: white;
     cursor: pointer;
+    transition: ease-out .3s;
+    font-weight: 500;
+}
+.button:hover{
+    text-shadow: 2px 3px 3px black;
+    box-shadow: 7px 10px 12px black;
+    background-color: red;
 }
 table{
     display: flex;
@@ -91,8 +104,4 @@ table{
     border-spacing: 15px;
     border-color: white;
     width: fit-content;
-}
-.alert{
-    font-size: 1.2em;
-    font-weight: 600;
 }

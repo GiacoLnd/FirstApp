@@ -7,7 +7,7 @@ if(isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'add': 
             // Faille XSS (Cross Site Scripting) évitée - empêche l'utilisateur d'injecter du code client malveillant - filtre les données entrées pour ne ressortir sur recap.php que le type de donnée voulue
-            $name = filter_input(INPUT_POST,'name', FILTER_SANITIZE_STRING);
+            $name = filter_input(INPUT_POST,'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $price = filter_input(INPUT_POST,'price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION); // FILTER_FLAG_ALLOW_FRACTION permet à l'utilisateur de mettre . pour séparer float
             $qtt = filter_input(INPUT_POST, 'qtt', FILTER_SANITIZE_NUMBER_INT);
 
@@ -33,10 +33,16 @@ if(isset($_POST['action'])) {
         break;
 
         case 'decrease':   // implémentation de la suppression d'article particuliers
+            $name = $_SESSION['products'][$_POST['index']]['name'];
             $index = $_POST['index'];
-            if(isset($_SESSION['products'][$index]) && $_SESSION['products'][$index]['qtt'] > 1) // vérifie si la quantité est supérieure à 1 - Ne fonctionnera pas si User tente de descendre à 0 ou moins
-             {
+            if($index !== null && isset($_SESSION['products'][$index])) // vérifie si la quantité est supérieure à 1 - Ne fonctionnera pas si User tente de descendre à 0 ou moins
+            {
                 $_SESSION['products'][$index]['qtt']--; // Décrémente la quantité de 1
+                if($_SESSION['products'][$index]['qtt'] == 0) {
+                    unset($_SESSION['products'][$index]);
+                    $_SESSION['products'] = array_values($_SESSION['products']);
+                    $_SESSION['message'] = $name." a été supprimé.";
+                }
             }
             break;
     
